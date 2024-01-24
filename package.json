@@ -1,0 +1,16 @@
+{
+  "name": "electron_ponto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "dotenv": "^16.4.1",
+    "electron": "^28.2.0"
+  }
+}
