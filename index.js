@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { app, BrowserWindow } = require("electron");
 
 const createWindow = () => {
@@ -11,4 +12,16 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
   createWindow();
+
+  //documentação
+  app.on("activate", () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
+
+//macOs == gay
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit();
+  }
 });
