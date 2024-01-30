@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roosters controle</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
     <script defer src="../javascript/renderer.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
+    <h1 id="ambiente"></h1>
+
+
     <h1>Controle de pontos da roosters</h1>
     <p id="versions"></p>
 
     <button id="but">Clica pra ver</button>
     <h2 id="pingHere"></h2>
+
+
+    <div style="border: 1px solid red;">
+        <video autoplay id="cameraOutput"></video>
+    </div>
 </body>
+
 </html>
