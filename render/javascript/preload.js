@@ -8,5 +8,5 @@ contextBridge.exposeInMainWorld("versions", {
 });
 
 contextBridge.exposeInMainWorld("env", {
-  debug: process.env.ambiente,
+  ambiente: process.env.ambiente,
 });

@@ -1,6 +1,31 @@
-body{
+body {
     background-color: teal;
 }
-h1{
+
+h1 {
     color: black;
+}
+
+#cameraConteiner {
+    /* border: 1px solid red; */
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+#cameraBackground {
+    background-color: darkslategray;
+    padding: 15px;
+    border-radius: 2em;
+    display: flex;
+    justify-content: center;
+}
+
+#cameraOutput {
+    border-radius: 2em;
+    width: 100%;
+}
+
+#loadingGif {
+    width: 10%;
 }
