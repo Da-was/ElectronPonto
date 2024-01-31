@@ -21,6 +21,7 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
   ipcMain.handle("ping", () => "pong");
+
   createWindow();
 
   //documentação

@@ -1,3 +1,7 @@
+Promise.all([
+  faceapi.nets.tinyFaceDetector.loadFromUri("./models"),
+  faceapi.nets.tinyFaceDetector.loadFromUri("./models"), //stoped here
+]);
 //Esperar a webcam nova para testar
 navigator.mediaDevices
   .getUserMedia({ video: true })
