@@ -1,12 +1,5 @@
-const information = document.getElementById("versions");
-information.innerText = `this app is using Chrome(V${versions.chrome()}), node.js(V${versions.node()})`;
+const information = (document.getElementById(
+  "versions"
+).innerText = `Versão do app (V${env.version})`);
 
-if (env.ambiente === "testes") {
-  document.getElementById("ambiente").innerText = `Ambiente de testes`;
-}
-
-const buttom = document.getElementById("but");
-const pingHere = document.getElementById("pingHere");
-buttom.addEventListener("click", async () => {
-  pingHere.innerText = await versions.ping();
-});
+document.title = `CPR ${env.version}`;
