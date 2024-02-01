@@ -4,29 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roosters controle</title>
+    <title>CPR X_X_X</title>
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
     <script defer src="../javascript/renderer.js"></script>
+    <script defer src="../javascript/util.js"></script>
     <script defer src="../javascript/faceDetection/cameraStart.js"></script>
+
     <link rel="stylesheet" href="../css/style.css">
+    <link id="darkStyle" rel="stylesheet" href="../css/dark.css">
+
 </head>
 
 <body>
-    <h1 id="ambiente"></h1>
+
+    <form action=""><!-- form pra enviar as coisa -->
+
+        <h1>CONTROLE DE PONTO DA ROOSTERS (CPR)</h1>
+        <aside id="versions"></aside>
 
 
-    <h1>Controle de pontos da roosters</h1>
-    <p id="versions"></p>
+        <div id="cameraConteiner">
+            <div id="cameraBackground">
+                <img src="../assets/loading.gif" alt="Loading" id="loadingGif">
+            </div>
 
-    <button id="but">Clica pra ver</button>
-    <h2 id="pingHere"></h2>
-
-    <div id="cameraConteiner">
-        <div id="cameraBackground">
-            <img src="../assets/loading.gif" alt="Loading" id="loadingGif">
         </div>
-    </div>
+
+
+        <div id="optionsAligner">
+            <div id="optionsConteiner">
+                <div class="optionEntry">
+                    <Button id="sendIcon">
+                        <img src="../assets/camera.png" alt="ENVIAR">
+                    </Button>
+                </div>
+                <div class="optionEntry">
+                    <label for="membroSelect">Membro:</label>
+                    <Select name="_membro" id="membroSelect">
+                        <option value="1">joão vinicius laurindo</option>
+                        <option value="2">sabrina dadasdasdasdasdasd</option>
+                        <option value="3">rafa dadasdasdasdasdasd</option>
+                        <option value="4">lucas dadasdasdasdasdasd</option>
+                    </Select>
+                </div>
+                <div class="optionEntry">
+                    <label for="horaAtualInput">Horario:</label>
+                    <input type="datetime" name="_horario" id="horaAtualInput" disabled>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+
 
 </body>
 

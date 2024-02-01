@@ -1,20 +1,35 @@
-body {
-    background-color: teal;
+input,
+select {
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.281);
+    color: white;
+    font-weight: bold;
+    width: 100%;
 }
 
-h1 {
-    color: black;
+label {
+    margin-right: 5px;
 }
 
-#cameraConteiner {
+#cameraConteiner,
+#optionsAligner {
     /* border: 1px solid red; */
     padding: 10px;
     display: flex;
     justify-content: center;
 }
 
+#versions {
+    color: red;
+}
+
+#optionsConteiner {
+    padding: 15px;
+    border-radius: 2em;
+}
+
 #cameraBackground {
-    background-color: darkslategray;
+
     padding: 15px;
     border-radius: 2em;
     display: flex;
@@ -28,4 +43,23 @@ h1 {
 
 #loadingGif {
     width: 10%;
+}
+
+
+
+#sendIcon {
+    border-radius: 45%;
+    background-color: rgba(255, 255, 255, 0.37);
+    padding: 10px;
+}
+
+#sendIcon img {
+    width: 25px;
+}
+
+.optionEntry {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
