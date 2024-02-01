@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const dataBaseConnection = require("./Helpers/dataBaseConnection.js");
 const path = require("node:path");
 const { app, BrowserWindow, ipcMain } = require("electron");
 
@@ -23,6 +24,7 @@ app.whenReady().then(() => {
   ipcMain.handle("ping", () => "pong");
 
   createWindow();
+  dataBaseConnection();
 
   //documentação
   app.on("activate", () => {
