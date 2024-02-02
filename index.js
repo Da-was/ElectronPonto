@@ -1,8 +1,11 @@
 require("dotenv").config();
 
 const dataBaseConnection = require("./Helpers/dataBaseConnection.js");
+const Membro = require("./models/Membro.js");
 const path = require("node:path");
 const { app, BrowserWindow, ipcMain } = require("electron");
+
+const { version } = require("./package.json");
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -12,21 +15,19 @@ const createWindow = () => {
       preload: path.join(__dirname, "/render/javascript/preload.js"),
     },
   });
-
   win.loadFile("./render/html/index.html");
-
-  if (process.env.debug === "true") {
-    win.webContents.openDevTools();
-  }
 };
 
 app.whenReady().then(() => {
   ipcMain.handle("ping", () => "pong");
+  ipcMain.handle("version", () => version);
+  ipcMain.handle("getMembros", () => {
+    return Membro.find({});
+  });
 
   createWindow();
   dataBaseConnection();
 
-  //documentação
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });

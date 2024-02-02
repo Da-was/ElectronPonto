@@ -1,10 +1,10 @@
 const { contextBridge, ipcRenderer } = require("electron");
 
-contextBridge.exposeInMainWorld("versions", {
-  ping: () => ipcRenderer.invoke("ping"),
+contextBridge.exposeInMainWorld("getDatabase", {
+  membros: () => ipcRenderer.invoke("getMembros"),
 });
 
 contextBridge.exposeInMainWorld("env", {
-  version: process.env.version,
+  version: ipcRenderer.invoke("version"),
   ambiente: process.env.ambiente,
 });
