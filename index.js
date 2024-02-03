@@ -1,41 +1,32 @@
 require("dotenv").config();
 
 const dataBaseConnection = require("./Helpers/dataBaseConnection.js");
-const Membro = require("./models/Membro.js");
+
 const path = require("node:path");
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow } = require("electron");
+const ipcHandle = require("./Helpers/ipcHandler.js");
+const checkIntegration = require("./Helpers/checkIntegration.js");
 
-const { version } = require("./package.json");
-
-const createWindow = () => {
+function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 600,
+    height: 800,
     webPreferences: {
-      preload: path.join(__dirname, "/render/javascript/preload.js"),
+      preload: path.join(__dirname, "Helpers/preload.js"),
     },
   });
   win.loadFile("./render/html/index.html");
-};
+}
 
-app.whenReady().then(() => {
-  ipcMain.handle("ping", () => "pong");
-  ipcMain.handle("version", () => version);
-  ipcMain.handle("getMembros", () => {
-    return Membro.find({});
-  });
-
-  createWindow();
+function initializeAll() {
+  checkIntegration();
   dataBaseConnection();
+  createWindow();
+  ipcHandle();
+}
 
-  app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
-  });
-});
+app.whenReady().then(initializeAll);
 
-//macOs == gay
 app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
+  if (process.platform !== "darwin") app.quit();
 });
