@@ -9,7 +9,7 @@ const checkIntegration = require("./Helpers/checkIntegration.js");
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 600,
+    width: 700,
     height: 800,
     webPreferences: {
       preload: path.join(__dirname, "Helpers/preload.js"),
