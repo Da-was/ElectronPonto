@@ -1,6 +1,7 @@
 const { Schema, model, SchemaTypes } = require("mongoose");
 
 const PontoSchema = new Schema({
+  _id: String,
   data: {
     type: Date,
     required: true,

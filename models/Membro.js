@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const MembroSchema = new Schema({
+  _id: String,
   nome: {
     type: String,
     required: true,
