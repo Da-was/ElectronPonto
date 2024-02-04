@@ -1,38 +1,32 @@
 require("dotenv").config();
 
-const path = require("node:path");
-const { app, BrowserWindow, ipcMain } = require("electron");
+const dataBaseConnection = require("./Helpers/dataBaseConnection.js");
 
-const createWindow = () => {
+const path = require("node:path");
+const { app, BrowserWindow } = require("electron");
+const ipcHandle = require("./Helpers/ipcHandler.js");
+const checkIntegration = require("./Helpers/checkIntegration.js");
+
+function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 700,
+    height: 800,
     webPreferences: {
-      preload: path.join(__dirname, "/render/javascript/preload.js"),
+      preload: path.join(__dirname, "Helpers/preload.js"),
     },
   });
-
   win.loadFile("./render/html/index.html");
+}
 
-  if (process.env.debug === "true") {
-    win.webContents.openDevTools();
-  }
-};
-
-app.whenReady().then(() => {
-  ipcMain.handle("ping", () => "pong");
-
+function initializeAll() {
+  checkIntegration();
+  dataBaseConnection();
   createWindow();
+  ipcHandle();
+}
 
-  //documentação
-  app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
-  });
-});
+app.whenReady().then(initializeAll);
 
-//macOs == gay
 app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
+  if (process.platform !== "darwin") app.quit();
 });
