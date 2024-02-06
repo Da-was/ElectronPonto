@@ -26,7 +26,7 @@ label {
 #pontoList {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 125px;
+    height: 175px;
     color: white
 }
 

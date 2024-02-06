@@ -12,6 +12,7 @@
     "chalk": "^4.1.2",
     "dotenv": "^16.4.1",
     "electron": "^28.2.0",
+    "image-data-uri": "^2.0.1",
     "mongoose": "^8.1.1"
   }
 }
