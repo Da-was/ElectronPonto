@@ -10,6 +10,11 @@ option {
     background-color: black;
 }
 
+#aviso {
+    color: white;
+    background-color: gray;
+}
+
 #cameraBackground {
     background-color: rgba(255, 255, 255, 0.05);
 }

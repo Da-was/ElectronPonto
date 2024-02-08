@@ -11,6 +11,11 @@ label {
     margin-right: 5px;
 }
 
+#aviso {
+    position: sticky;
+    top: 0px;
+}
+
 #cameraConteiner,
 #optionsAligner {
     /* border: 1px solid red; */
