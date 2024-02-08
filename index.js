@@ -1,38 +1,56 @@
 require("dotenv").config();
 
-const path = require("node:path");
-const { app, BrowserWindow, ipcMain } = require("electron");
+const dataBaseConnection = require("./Helpers/dataBaseConnection.js");
 
-const createWindow = () => {
+const path = require("node:path");
+const { app, BrowserWindow, dialog } = require("electron");
+const ipcHandle = require("./Helpers/ipcHandler.js");
+const checkIntegration = require("./Helpers/checkIntegration.js");
+const discordSupport = require("./Integrations/discord-support.js");
+
+function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 700,
+    height: 800,
     webPreferences: {
-      preload: path.join(__dirname, "/render/javascript/preload.js"),
+      preload: path.join(__dirname, "Helpers/preload.js"),
     },
   });
-
   win.loadFile("./render/html/index.html");
+}
+
+async function handleEror(error) {
+  const messageBoxOptions = {
+    type: "error",
+    title: "Falha no processo principal",
+    message: "Uma mensagem foi enviada ao suporte",
+  };
 
   if (process.env.debug === "true") {
-    win.webContents.openDevTools();
+    messageBoxOptions.message = error.toString();
+  } else {
+    if (checkIntegration.integrations.discord) {
+      await discordSupport.sendMessage(error.toString());
+    }
   }
-};
 
-app.whenReady().then(() => {
-  ipcMain.handle("ping", () => "pong");
+  dialog.showMessageBoxSync(messageBoxOptions);
+  app.exit(1);
+}
 
-  createWindow();
+function initializeAll() {
+  try {
+    checkIntegration.checkAvaible();
+    dataBaseConnection();
+    createWindow();
+    ipcHandle();
+  } catch (error) {
+    handleEror(error);
+  }
+}
 
-  //documentação
-  app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
-  });
-});
+app.whenReady().then(initializeAll);
 
-//macOs == gay
 app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
+  if (process.platform !== "darwin") app.quit();
 });

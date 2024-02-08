@@ -6,11 +6,15 @@ h1 {
     color: white;
 }
 
+option {
+    background-color: black;
+}
+
 #cameraBackground {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-#optionsConteiner {
+.optionsConteiner {
     background-color: rgba(255, 255, 255, 0.05);
 }
 

@@ -28,29 +28,32 @@
             <div id="cameraBackground">
                 <img src="../assets/loading.gif" alt="Loading" id="loadingGif">
             </div>
-
+            <canvas hidden id="imagePreview"></canvas>
         </div>
 
 
         <div id="optionsAligner">
-            <div id="optionsConteiner">
+            <div class="optionsConteiner">
                 <div class="optionEntry">
-                    <Button id="sendIcon">
+                    <Button type="button" id="sendIcon">
                         <img src="../assets/camera.png" alt="ENVIAR">
                     </Button>
                 </div>
                 <div class="optionEntry">
                     <label for="membroSelect">Membro:</label>
-                    <Select name="_membro" id="membroSelect">
-                        <option value="1">joão vinicius laurindo</option>
-                        <option value="2">sabrina dadasdasdasdasdasd</option>
-                        <option value="3">rafa dadasdasdasdasdasd</option>
-                        <option value="4">lucas dadasdasdasdasdasd</option>
-                    </Select>
+                    <Select name="_membro" id="membroSelect"></Select>
                 </div>
                 <div class="optionEntry">
                     <label for="horaAtualInput">Horario:</label>
                     <input type="datetime" name="_horario" id="horaAtualInput" disabled>
+                </div>
+                <div class="optionEntry">
+                    <input id="novoMembro" type="button" value="Novo membro">
+                </div>
+            </div>
+            <div class="optionsConteiner">
+                <div id="pontoList">
+
                 </div>
             </div>
 

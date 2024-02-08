@@ -23,9 +23,57 @@ label {
     color: red;
 }
 
-#optionsConteiner {
-    padding: 15px;
+#pontoList {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 175px;
+    color: white
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 3px;
+    margin: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+.ponto {
+    padding: 5px;
+    border: 1px solid white;
+    margin: 3px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.nome,
+.data,
+.hora {
+    margin-right: 5px;
+}
+
+.data {
+    color: aqua
+}
+
+.nome {
+    color: greenyellow
+}
+
+.optionsConteiner {
+    padding: 10px;
     border-radius: 2em;
+    margin: 5px;
 }
 
 #cameraBackground {
