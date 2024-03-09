@@ -6,4 +6,3 @@
 - configurar o banco de dados
 - implementar o reconhecimento facila
 - suporte em caso de falhas
-  asdasdasdasd

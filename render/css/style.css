@@ -1,10 +1,104 @@
+/* importando a fonte 'Raleway' e 'Gravicon' */
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-Regular.woff2') format('woff2'); /* Para navegadores modernos */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gravicon';
+    src: url('../fonts/GraviconDisplay.woff2') format('woff2'),
+        url('../fonts/GraviconDisplay.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat.ttf') format('truetype');
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* remocao das bordas e margens padroes */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/* fonte padrao para todo o sistema */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#logoRooster {
+    font-family: 'Gravicon';
+    font-weight: normal;
+    font-style: normal;
+}
+
+header.headerContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+header.headerContainer h1 {
+    font-size: 20px;
+    font-weight: 300;
+    text-transform: uppercase;
+    padding: 1rem 0;
+}
+
+div.containerLogo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem auto;
+    gap: 10px;
+}
+
+div.containerLogo img {
+    width: 135px;
+}
+
+div.containerLogo span {
+    font-size: 28px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.time {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin: 1.5rem auto;
+    padding: 10px 2rem;
+    width: fit-content;
+}
+
+.time .hours {
+    font-size: 150px;
+}
+
+.time .seconds {
+    font-size: 50px;
+}
+
 input,
 select {
-    padding: 5px;
-    background-color: rgba(255, 255, 255, 0.281);
-    color: white;
+    padding: 8px;
+    border-radius: 5px;
     font-weight: bold;
     width: 100%;
+    border: none;
 }
 
 label {
@@ -17,17 +111,24 @@ label {
     padding: 10px;
     display: flex;
     justify-content: center;
+    gap: 20px;
 }
 
 #versions {
     color: red;
+    font-size: 16px;
+    text-transform: lowercase;
+    margin-left: 1rem;
 }
 
 #pontoList {
+    display: flex;
+    flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 175px;
-    color: white
+    height: 205px;
+    gap: 5px;
+    color: white;
 }
 
 /* width */
@@ -48,12 +149,11 @@ label {
 }
 
 .ponto {
-    padding: 5px;
-    border: 1px solid white;
-    margin: 3px;
+    padding: 10px;
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
-
+    text-transform: capitalize;
 }
 
 .nome,
@@ -62,30 +162,25 @@ label {
     margin-right: 5px;
 }
 
-.data {
-    color: aqua
-}
-
-.nome {
-    color: greenyellow
-}
-
 .optionsConteiner {
     padding: 10px;
-    border-radius: 2em;
-    margin: 5px;
+    border-radius: 5px;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.optionsConteiner:hover {
+    transform: scale(1.05);
 }
 
 #cameraBackground {
-
     padding: 15px;
-    border-radius: 2em;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
 }
 
 #cameraOutput {
-    border-radius: 2em;
+    border-radius: 5px;
     width: 100%;
 }
 
@@ -93,16 +188,46 @@ label {
     width: 10%;
 }
 
-
-
 #sendIcon {
-    border-radius: 45%;
-    background-color: rgba(255, 255, 255, 0.37);
-    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6em;
+    height: 3em;
+    cursor: pointer;
+    border-radius: 30em;
+    font-size: 15px;
+    font-family: inherit;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
-#sendIcon img {
-    width: 25px;
+#sendIcon::before {
+    content: '';
+    width: 0;
+    height: 3em;
+    border-radius: 30em;
+    position: absolute;
+    top: -4px;
+    left: -1px;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+   
+#sendIcon:hover::before {
+    width: 9em;
+}
+
+#sendIcon svg {
+    width: 32px;
+    height: 32px;
+}
+
+#sendIcon svg path {
+    transition: .5s ease;
 }
 
 .optionEntry {
@@ -110,4 +235,28 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.optionEntry label {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+input#newMember {
+    text-transform: capitalize;
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 25px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border-radius: 5px;
+}
+  
+input#newMember:active {
+    transform: scale(0.9);
 }
