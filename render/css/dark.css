@@ -37,6 +37,11 @@ div.containerLogo span{
     color: white;
 }
 
+#aviso {
+    color: white;
+    background-color: gray;
+}
+
 #cameraBackground {
     background-color: var(--color3);
     box-shadow: 0 20px 25px -5px var(--color5), 0 10px 10px -5px var(--color5);
