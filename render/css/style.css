@@ -7,8 +7,27 @@ select {
     width: 100%;
 }
 
+body {
+    height: 100vh;
+}
+
 label {
     margin-right: 5px;
+}
+
+@font-face {
+    font-family: 'Gravicon';
+    src: url('GraviconRegular.woff2') format('woff2'),
+        url('GraviconRegular.woff') format('woff');
+    font-weight: lighter;
+    font-style: normal;
+
+}
+
+
+
+#intro {
+    font-family: 'Gravicon';
 }
 
 #aviso {
@@ -115,4 +134,55 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#agradecimentos {
+    color: white;
+}
+
+#agradecimentos ul {
+    list-style: none;
+}
+
+.contentConteiner {
+    background-color: rgba(255, 255, 255, 0.212);
+    margin: 10%;
+    padding: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.perfilConteiner {
+    margin: 10px;
+    outline: white 1px solid;
+}
+
+.perfilBio {
+    width: 300px;
+}
+
+.bioNome {
+    font-size: 24px;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.bioTexto {
+    padding: 10px;
+    color: rgb(0, 0, 0);
+
+}
+
+.perfilImg {
+    width: 300px;
+}
+
+.bioContato {
+    color: black;
+}
+
+.bioContato ul {
+    list-style: none;
+
 }

@@ -14,4 +14,5 @@ contextBridge.exposeInMainWorld("sendDatabase", {
 contextBridge.exposeInMainWorld("env", {
   version: ipcRenderer.invoke("version"),
   ambiente: process.env.ambiente,
+  debug: process.env.debug,
 });
