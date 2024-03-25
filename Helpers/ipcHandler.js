@@ -1,3 +1,5 @@
+//Refazer o arquivo para separar o que é banco de dados e o que não é
+
 const { ipcMain, BrowserWindow } = require("electron");
 const imageDataUri = require("image-data-uri");
 
@@ -16,24 +18,36 @@ module.exports = function handleIpc() {
 };
 
 async function baterPonto(event, obj) {
+  const retObject = {
+    message: `DefaultMessage (Something probaly went wrong)`,
+  };
+
   const membroObj = await Membro.findById(obj.membroId).exec();
-  const ponto = await Ponto.create({
+  await Ponto.create({
     membro: membroObj.id,
-  });
+  })
+    .then(() => {
+      retObject.message = `Ponto de ${membroObj.nome}  batido com sucesso! `;
+    })
+    .catch((error) => {
+      retObject.message = `Algo deu errado ao tentar bater o ponto.`;
+      retObject.error = error;
+      return retObject;
+    });
 
   const dataAtual = new Date().toLocaleDateString().replaceAll("/", "-");
   const horaAtual = new Date().toLocaleTimeString().replaceAll(":", "_");
 
   let path = `./Storage/Pontos/${membroObj.id}/${dataAtual}/${horaAtual}.png`;
 
-  await imageDataUri
-    .outputFile(obj.imgData, path)
-    /* .then((succ) => console.log(succ)) colocar log aqui */
-    .catch((error) => console.error(error));
+  if (obj.imgData !== "") {
+    await imageDataUri.outputFile(obj.imgData, path).catch((error) => {
+      retObject.message = retObject.concat("|", "Erro ao salvar a foto.");
+      retObject.error = error;
+    });
+  }
 
-  return {
-    sucess: `Ponto de ${membroObj.nome}  batido com sucesso! `,
-  };
+  return retObject;
 }
 
 async function getMembros() {

@@ -1,6 +1,9 @@
 const canvas = document.getElementById("imagePreview");
 const ctx = canvas.getContext("2d");
 const videoOutuput = document.createElement("video");
+
+let cameraEnabled = false;
+
 document.getElementById("sendIcon").addEventListener("click", snapshot);
 
 function startVideo() {
@@ -12,8 +15,12 @@ function startVideo() {
       videoOutuput.setAttribute("id", "cameraOutput");
       document.getElementById("cameraBackground").appendChild(videoOutuput);
       videoOutuput.srcObject = stream;
+      cameraEnabled = true;
     })
-    .catch((error) => alert(error));
+    .catch((error) => {
+      cameraEnabled = false;
+      alert(error);
+    });
 }
 
 async function snapshot() {
@@ -22,14 +29,12 @@ async function snapshot() {
   await sendDatabase
     .baterPonto({
       membroId: document.getElementById("membroSelect").value,
-      imgData: canvas.toDataURL(),
+      imgData: cameraEnabled == true ? canvas.toDataURL() : "",
     })
     .then((response) => {
-      if (response.sucess) {
-        alert(response.sucess);
-      } else {
-        //ainda não implementado
-        alert(response.fail);
+      alert(response.message);
+      if (response.error) {
+        console.log(response.error);
       }
     })
     .catch((error) => console.log(error));
