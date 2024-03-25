@@ -1,10 +1,12 @@
 /* paleta de cores tema branco */
-:root{
+:root {
     /* cores principais */
-    --color1: #235C87; /* cor principal - titulos/destaques*/
+    --color1: #235C87;
+    /* cor principal - titulos/destaques*/
     --color2: #19445c;
-    --color3: #52849f; 
-    --color4: #DBE0E4; /* cor para fundo */
+    --color3: #52849f;
+    --color4: #DBE0E4;
+    /* cor para fundo */
     /* cores sombra */
     --color5: #3B9BE5;
 }
@@ -28,7 +30,7 @@ header.headerContainer h1 {
     color: white;
 }
 
-div.containerLogo span{
+div.containerLogo span {
     color: var(--color1);
 }
 
@@ -84,5 +86,3 @@ input#newMember:hover {
 .ponto .data {
     color: aqua;
 }
-
- 

@@ -19,17 +19,17 @@ function updateTime() {
   const now = new Date(); // data e hora atual
 
   // horario do relogio digital
-  const timeHours   = document.getElementById('hours');
-  const timeSeconds = document.getElementById('seconds');
-  
-  const hours = now.getHours().toString().padStart(2, '0');
-  const minutes = now.getMinutes().toString().padStart(2, '0');
-  const seconds = now.getSeconds().toString().padStart(2, '0');
+  const timeHours = document.getElementById("hours");
+  const timeSeconds = document.getElementById("seconds");
+
+  const hours = now.getHours().toString().padStart(2, "0");
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const seconds = now.getSeconds().toString().padStart(2, "0");
 
   const timeHoursString = `${hours}:${minutes}`;
   timeHours.textContent = timeHoursString; // atualiza as horas e minutos
   timeSeconds.textContent = seconds; // atualiza os segundos
-  
+
   // horario do input
   horaInput.value =
     now.getDate().toString().padStart(2, "0") +
@@ -58,7 +58,7 @@ async function preencherSelect() {
 
 async function preencherPontos() {
   const pontoList = document.getElementById("pontoList");
-  pontoList.replaceChildren(); //limpa a div
+  pontoList.replaceChildren(); //limpa a div, podemos melhorar pra ele não flicar na hora que atualizar
   const pontos = await getDatabase.pontos();
 
   pontos.forEach((element) => {

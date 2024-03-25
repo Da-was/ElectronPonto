@@ -36,6 +36,8 @@ async function snapshot() {
       if (response.error) {
         console.log(response.error);
       }
+
+      preencherPontos(); //Melhorar a estrutura de funções e arquivos
     })
     .catch((error) => console.log(error));
 }

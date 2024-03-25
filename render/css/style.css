@@ -1,7 +1,8 @@
 /* importando a fonte 'Raleway' e 'Gravicon' */
 @font-face {
     font-family: 'Raleway';
-    src: url('../fonts/Raleway-Regular.woff2') format('woff2'); /* Para navegadores modernos */
+    src: url('../fonts/Raleway-Regular.woff2') format('woff2');
+    /* Para navegadores modernos */
     font-weight: normal;
     font-style: normal;
 }
@@ -109,24 +110,14 @@ label {
     margin-right: 5px;
 }
 
-@font-face {
-    font-family: 'Gravicon';
-    src: url('GraviconRegular.woff2') format('woff2'),
-        url('GraviconRegular.woff') format('woff');
-    font-weight: lighter;
-    font-style: normal;
-
-}
-
-
 
 #intro {
     font-family: 'Gravicon';
 }
 
 #aviso {
-    position: sticky;
-    top: 0px;
+    text-align: center;
+    margin: 5px;
 }
 
 #cameraConteiner,
@@ -240,7 +231,7 @@ label {
     display: block;
     z-index: -1;
 }
-   
+
 #sendIcon:hover::before {
     width: 9em;
 }
@@ -280,9 +271,10 @@ input#newMember {
     transition: ease-out 0.5s;
     border-radius: 5px;
 }
-  
+
 input#newMember:active {
     transform: scale(0.9);
+}
 
 #agradecimentos {
     color: white;

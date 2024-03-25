@@ -5,7 +5,7 @@ const PontoSchema = new Schema({
     type: Date,
     required: true,
     min: "2024/02/01",
-    default: () => new Date().toLocaleString(),
+    default: () => new Date(),
   },
   membro: {
     type: SchemaTypes.ObjectId,

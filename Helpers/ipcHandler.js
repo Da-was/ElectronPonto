@@ -65,7 +65,28 @@ async function getMembros() {
 async function getPontos() {
   let pontoList = [];
 
-  const pontos = await Ponto.find({}).populate("membro").exec();
+  //Muito texto, tem como melhorar
+  let todayMidnight = new Date();
+  todayMidnight.setUTCHours(0);
+  todayMidnight.setUTCMinutes(0);
+  todayMidnight.setUTCSeconds(0);
+  todayMidnight.setUTCMilliseconds(0);
+
+  let nextMidnight = new Date();
+  nextMidnight.setUTCHours(24);
+  nextMidnight.setUTCMinutes(0);
+  nextMidnight.setUTCSeconds(0);
+  nextMidnight.setUTCMilliseconds(0);
+
+  const pontos = await Ponto.find({
+    data: {
+      $gte: todayMidnight,
+      $lte: nextMidnight,
+    },
+  })
+    .populate("membro")
+    .exec();
+
   pontos.forEach((ponto) => {
     ponto = ponto.toObject();
     ponto._id = ponto._id.toString();
@@ -88,7 +109,7 @@ function openModal(url) {
 }
 
 async function newMembro(event, obj) {
-  const nwMembro = await Membro.create({
+  await Membro.create({
     nome: obj.nome,
     equipe: obj.equipe,
   }).catch((error) => {
