@@ -8,25 +8,39 @@ async function render() {
   preencherSelect();
   preencherPontos();
 
-  document.getElementById("novoMembro").addEventListener("click", async () => {
+  document.getElementById("newMember").addEventListener("click", async () => {
     await getDatabase.openModal("teste");
   });
 
-  setInterval(dataTimer, 1000);
+  setInterval(updateTime, 1000);
 }
 
-function dataTimer() {
-  const currentdate = new Date();
+function updateTime() {
+  const now = new Date(); // data e hora atual
+
+  // horario do relogio digital
+  const timeHours   = document.getElementById('hours');
+  const timeSeconds = document.getElementById('seconds');
+  
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const seconds = now.getSeconds().toString().padStart(2, '0');
+
+  const timeHoursString = `${hours}:${minutes}`;
+  timeHours.textContent = timeHoursString; // atualiza as horas e minutos
+  timeSeconds.textContent = seconds; // atualiza os segundos
+  
+  // horario do input
   horaInput.value =
-    currentdate.getDate().toString().padStart(2, "0") +
+    now.getDate().toString().padStart(2, "0") +
     "/" +
-    (currentdate.getMonth() + 1).toString().padStart(2, "0") +
+    (now.getMonth() + 1).toString().padStart(2, "0") +
     "/" +
-    currentdate.getFullYear() +
+    now.getFullYear() +
     " -- " +
-    currentdate.getHours() +
+    hours +
     ":" +
-    currentdate.getMinutes().toString().padStart(2, "0");
+    minutes;
 }
 
 async function preencherSelect() {
